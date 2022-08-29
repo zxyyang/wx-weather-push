@@ -30,7 +30,7 @@ public class wxController {
      * 每天早上7：30执行推送
      * @return
      */
-    @Scheduled(cron = "0 30 7 ? * *")
+    @Scheduled(cron = "0 30 7 ? * *",zone = "Asia/BeiJing")
     @RequestMapping("/send")
     public String send() {
         return sendService.sendWeChatMsg();
@@ -41,7 +41,7 @@ public class wxController {
      * 每天早上7：30执行推送
      * @return
      */
-    @Scheduled(cron = "0 0 21 ? * *")
+    @Scheduled(cron = "0 0 21 ? * *",zone = "Asia/BeiJing")
     @RequestMapping("/sendNight")
     public String sendNight() {
         return sendService.sendNightWeChatMsg();

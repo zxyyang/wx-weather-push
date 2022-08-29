@@ -28,6 +28,7 @@ import java.util.*;
  */
 @Service
 public class SendServiceImpl implements SendService {
+    final TimeZone timeZone = TimeZone.getTimeZone("GTM+8");
     @Autowired
     private TianqiService tianqiService;
 
@@ -37,6 +38,9 @@ public class SendServiceImpl implements SendService {
     private ConfigConstant configConstant;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    public SendServiceImpl(){
+        TimeZone.setDefault(timeZone);
+    }
     private String  getAccessToken() {
         //这里直接写死就可以，不用改，用法可以去看api
         String grant_type = "client_credential";
@@ -62,7 +66,6 @@ public class SendServiceImpl implements SendService {
         List<JSONObject> errorList = new ArrayList();
         HashMap<String,Object> resultMap = new HashMap<>();
         for (String opedId : configConstant.getOpenidList()) {
-
             //今天
             String date = DateUtil.formatDate(new Date(), "yyyy-MM-dd hh:mm");
             String week = DateUtil.getWeekOfDate(new Date());
