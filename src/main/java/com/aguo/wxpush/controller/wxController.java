@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.TimeZone;
 
 @RestController
 public class wxController {
@@ -24,13 +25,12 @@ public class wxController {
     private SendService sendService;
 
 
-
     /**
      * 获取Token
      * 每天早上7：30执行推送
      * @return
      */
-    @Scheduled(cron = "0 30 7 ? * *",zone = "Asia/BeiJing")
+    @Scheduled(cron = "0 30 7 ? * *",zone = "GMT-8")
     @RequestMapping("/send")
     public String send() {
         return sendService.sendWeChatMsg();
@@ -41,7 +41,7 @@ public class wxController {
      * 每天早上7：30执行推送
      * @return
      */
-    @Scheduled(cron = "0 0 21 ? * *",zone = "Asia/BeiJing")
+    @Scheduled(cron = "0 0 21 ? * *",zone = "GMT-8")
     @RequestMapping("/sendNight")
     public String sendNight() {
         return sendService.sendNightWeChatMsg();

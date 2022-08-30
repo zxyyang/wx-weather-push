@@ -28,7 +28,7 @@ import java.util.*;
  */
 @Service
 public class SendServiceImpl implements SendService {
-    final TimeZone timeZone = TimeZone.getTimeZone("GTM+8");
+    final static TimeZone timeZone = TimeZone.getTimeZone("GMT+8");
     @Autowired
     private TianqiService tianqiService;
 
