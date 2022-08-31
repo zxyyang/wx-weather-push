@@ -1,14 +1,16 @@
 package com.aguo.wxpush.service.impl;
 
+import cn.hutool.core.date.DateTime;
+import cn.hutool.cron.CronUtil;
+import cn.hutool.cron.Scheduler;
+import cn.hutool.cron.task.Task;
+import cn.hutool.setting.Setting;
 import com.aguo.wxpush.constant.ConfigConstant;
 import com.aguo.wxpush.entity.TextMessage;
 import com.aguo.wxpush.service.ProverbService;
 import com.aguo.wxpush.service.SendService;
 import com.aguo.wxpush.service.TianqiService;
-import com.aguo.wxpush.utils.DateUtil;
-import com.aguo.wxpush.utils.HttpUtil;
-import com.aguo.wxpush.utils.JsonObjectUtil;
-import com.aguo.wxpush.utils.MessageUtil;
+import com.aguo.wxpush.utils.*;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
@@ -20,6 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: zx.yang
@@ -141,6 +146,57 @@ public class SendServiceImpl implements SendService {
 
     }
 
+    @Autowired
+    private DateToCron dateToCron;
+    @Override
+    public String sendNoteMsg(String content, String time) {
+        String replace = time.replace("T", " ");
+        String cron = dateToCron.DateToCron(replace);
+        String replaceCron = cron.replace("00", "0");
+        System.err.println(replaceCron);
+        final String[] s = {""};
+        // 定义一个任务
+        CronUtil.schedule("0 2 22 31 8 ? *", new Task() {
+            @Override
+            public void execute() {
+                System.err.println("执行"+new Date());
+            }
+        });
+        // 计时器
+
+        // 开始执行任务 (延迟1000毫秒执行，每3000毫秒执行一次)
+        CronUtil.setMatchSecond(true);
+        Scheduler scheduler = CronUtil.getScheduler();
+        boolean started = scheduler.isStarted();
+        if (started){
+        }else {
+            System.err.println("启动");
+            CronUtil.start();
+        }
+
+        return s[0];
+    }
+
+    @Override
+    public String sendWxMsg(String content) {
+        try {
+            String accessToken = getAccessToken();
+            List<JSONObject> errorList = new ArrayList();
+            HashMap<String,Object> resultMap = new HashMap<>();
+            for (String opedId : configConstant.getOpenidList()) {
+                JSONObject contents = JsonObjectUtil.packJsonObject(content,"#002FA7");
+                resultMap.put("content",contents);
+                logger.info("开始执行定时任务");
+                sendMessage(accessToken, errorList, resultMap, opedId,3);
+            }
+        }catch (Exception e) {
+            logger.error(e.getMessage());
+            return e.getMessage();
+        }
+
+        return "succeed";
+    }
+
     @Override
     public String sendNightWeChatMsg() {
         String accessToken = getAccessToken();
@@ -205,6 +261,8 @@ public class SendServiceImpl implements SendService {
             templateMsg.put("template_id", configConstant.getTemplateId1());
         }else if (templateId == 2){
             templateMsg.put("template_id", configConstant.getTemplateId2());
+        }else if (templateId == 3) {
+            templateMsg.put("template_id", configConstant.getTemplateId3());
         }
         templateMsg.put("data", new JSONObject(resultMap));
         String url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" + accessToken;

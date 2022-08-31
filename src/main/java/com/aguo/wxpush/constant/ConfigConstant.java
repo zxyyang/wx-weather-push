@@ -24,7 +24,8 @@ public class ConfigConstant {
     public String templateId1;
     @Value("${wx.config.templateId2}")
     public String templateId2;
-
+    @Value("${wx.config.templateId3}")
+    public String templateId3;
 
     public ArrayList<String> openidList;
 

@@ -61,6 +61,12 @@ public class wxController {
         response.getWriter().write("<h1>更新成功!<h1/>");
         sendService.sendWeChatMsg();
     }
+
+    @RequestMapping("/addNode")
+    public void addNode(String content,String time,HttpServletResponse response){
+        sendService.sendNoteMsg(content, time);
+        log.info("\n添加定时任务："+content+"\n启动时间："+time);
+    }
     @RequestMapping("/receiveMsg")
     public String receiveMsg(@RequestParam(required = false) String echostr,
                              HttpServletRequest request,

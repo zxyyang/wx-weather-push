@@ -1,33 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <meta charset="UTF-8">
-    <title>公众号推送初始化</title>
-    <style>
-        *{
-            color: #1f95c5;
-        }
-        form {
-            text-align: center;
-            margin-top: 100px;
-        }
-        * {
-            font-size: 18px;
-        }
-        input[type=submit] {
-            margin-top: 20px;
-        }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>备忘录通知</title>
+  <style>
+    *{
+      color: #1ea6ef;
+    }
+    form {
+      text-align: center;
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    * {
+      font-size: 18px;
+    }
+    input[type=submit] {
+      margin-top: 20px;
+    }
+    .arrow{
+      font-weight: bold;
+      color: #1fc567;
+    }
+    .content{
+
+      width: 300px;
+      height: 150px;
+      font-size: 10px;
+    }
+    .parentD{
+      display: flex;
+      justify-content: center;
+    }
+    .main{
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  </style>
 </head>
 <body>
+<div>
+<div>
+<form action="./addNode" method="get">
 
-    <form action="./changeConfig" method="get">
-        <p>更新配置</p>
-        目标天气城市：<input name="city" type="text" value="上海市">(最多到区) <br>
-<!--        推送时间：<input name="time" type="text" value="8:00"> <br>-->
-        <input type="submit" value="提交">
+  <p class="arrow">添加新的备忘录</p>
+  <div class="main">
+ <div class="parentD"> <span>备忘录内容：</span><textarea class="content" name="content"  value="上海市"> </textarea><br></div>
+  <p>   </p>
+  <div class="chenri"><span>备忘录内容：</span> <input type="datetime-local"  class="dataTimeTool" name="time" type="text" > <br></div>
+  </div>
+  <input type="submit" value="添加配置">
+</form>
+</div>
+<div>
+    <form class="changeLocal" action="./changeConfig" method="get">
+        <p class="arrow">更新配置</p>
+        <div class="parentD">  <span>目标天气城市：</span><input name="city" type="text" value="上海市">(最多到区) <br></div>
+        <input type="submit" value="提交修改">
     </form>
+</div>
+</div>
+<script type="text/javascript">
+    import dayjs from '../../libs/dayjs.min.js'
+    var date = new Date();
+    var format = dayjs.format(date);
+    var elementsByClassNameElement = document.getElementsByClassName('dataTimeTool')[0];
+    elementsByClassNameElement.value =format;
 
-
+    var date1 = date.getVarDate();
+    console.log(format);
+</script>
 </body>
 </html>

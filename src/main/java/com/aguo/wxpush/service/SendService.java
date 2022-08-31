@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 public interface SendService {
     String sendWeChatMsg();
 
+    String sendNoteMsg(String content ,String time);
+    String sendWxMsg(String content);
+
     String sendNightWeChatMsg();
     String messageHandle(HttpServletRequest request, HttpServletResponse response);
 }
