@@ -40,3 +40,4 @@ xxl:
       port: 9999 #xxljob配置的端口号，默认为9999
       logpath: /data/xxl-job/jobhandler  #执行器运行日志文件存储磁盘路径
       logretentiondays: 7  #调度中心日志表数据保存天数，过期日志自动清理；限制大于等于7时生效，否则, 如-1，关闭自动清理功能
+    accessToken: #token
