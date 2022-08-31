@@ -161,7 +161,7 @@ public class SendServiceImpl implements SendService {
         CronUtil.schedule(StrCron, new Task() {
             @Override
             public void execute() {
-                System.err.println("执行"+new Date());
+                s[0] = sendWxMsg(content);
             }
         });
         // 计时器
