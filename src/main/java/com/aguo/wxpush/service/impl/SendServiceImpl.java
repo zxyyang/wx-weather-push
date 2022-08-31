@@ -152,11 +152,13 @@ public class SendServiceImpl implements SendService {
     public String sendNoteMsg(String content, String time) {
         String replace = time.replace("T", " ");
         String cron = dateToCron.DateToCron(replace);
-        String replaceCron = cron.replace("00", "0");
-        System.err.println(replaceCron);
+        String replaceCron = cron.replace("00", "c");
+        String replace1 = replaceCron.replace("0", "");
+        String StrCron = replace1.replace("c", "0");
+        System.err.println(StrCron);
         final String[] s = {""};
         // 定义一个任务
-        CronUtil.schedule("0 2 22 31 8 ? *", new Task() {
+        CronUtil.schedule(StrCron, new Task() {
             @Override
             public void execute() {
                 System.err.println("执行"+new Date());
