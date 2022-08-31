@@ -33,7 +33,7 @@ server:
 xxl:
   job:
     admin:
-      addresses: http://d-xxljob.dmsd.tech:8081/xxl-job  #xxljob调度中心部署  例如：http://127.0.0.1:8080/xxl-job-admin
+      addresses: http://192.168.2.230:8082/xxl-job  #xxljob调度中心部署  例如：http://127.0.0.1:8080/xxl-job-admin
     executor:
       appname: xxlJob #xxljob配置的执行器名称，
       ip:             #执行器IP，默认为空表示自动获取IP
