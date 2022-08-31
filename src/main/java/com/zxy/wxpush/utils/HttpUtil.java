@@ -1,5 +1,7 @@
 package com.zxy.wxpush.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,6 +11,7 @@ import java.net.URLConnection;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public class HttpUtil {
     /**
      * 向指定URL发送GET方法的请求
@@ -37,9 +40,9 @@ public class HttpUtil {
             // 获取所有响应头字段
             Map<String, List<String>> map = connection.getHeaderFields();
             // 遍历所有的响应头字段
-            for (String key : map.keySet()) {
-                System.out.println(key + "--->" + map.get(key));
-            }
+          /*  for (String key : map.keySet()) {
+               // System.out.println(key + "--->" + map.get(key));
+            }*/
             // 定义 BufferedReader输入流来读取URL的响应
             in = new BufferedReader(new InputStreamReader(
                     connection.getInputStream()));
@@ -48,7 +51,7 @@ public class HttpUtil {
                 result += line;
             }
         } catch (Exception e) {
-            System.out.println("发送GET请求出现异常！" + e);
+            log.error("发送GET请求出现异常！" + e);
             e.printStackTrace();
         }
         // 使用finally块来关闭输入流

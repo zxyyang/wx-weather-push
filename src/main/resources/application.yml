@@ -33,11 +33,12 @@ server:
 xxl:
   job:
     admin:
-      addresses: http://192.168.2.230:8082/xxl-job  #xxljob调度中心部署  例如：http://127.0.0.1:8080/xxl-job-admin
+      addresses: http://localhost:8080/xxl-job-admin  #xxljob调度中心部署  例如：http://127.0.0.1:8080/xxl-job-admin
+    #token
+    accessToken: zxyang
     executor:
       appname: xxlJob #xxljob配置的执行器名称，
       ip:             #执行器IP，默认为空表示自动获取IP
-      port: 9999 #xxljob配置的端口号，默认为9999
+      port: 9999  #xxljob配置的端口号，默认为9999
       logpath: /data/xxl-job/jobhandler  #执行器运行日志文件存储磁盘路径
       logretentiondays: 7  #调度中心日志表数据保存天数，过期日志自动清理；限制大于等于7时生效，否则, 如-1，关闭自动清理功能
-    accessToken: #token
