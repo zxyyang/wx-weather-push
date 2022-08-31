@@ -153,12 +153,14 @@ public class SendServiceImpl implements SendService {
         String replace = time.replace("T", " ");
         String cron = dateToCron.DateToCron(replace);
         String replaceCron = cron.replace("00", "c");
-        String replace1 = replaceCron.replace("0", "");
+        String t = replaceCron.replace("0 ", "t");
+        String replace1 = t.replace("0", "");
         String StrCron = replace1.replace("c", "0");
-        System.err.println(StrCron);
+        String t1 = StrCron.replace("t", "0 ");
+        System.err.println(t1);
         final String[] s = {""};
         // 定义一个任务
-        CronUtil.schedule(StrCron, new Task() {
+        CronUtil.schedule(t1, new Task() {
             @Override
             public void execute() {
                 s[0] = sendWxMsg(content);
