@@ -3,6 +3,7 @@ package com.aguo.wxpush.service.impl;
 import com.aguo.wxpush.constant.ConfigConstant;
 import com.aguo.wxpush.service.TianqiService;
 import com.aguo.wxpush.utils.HttpUtil;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
@@ -51,7 +52,7 @@ public class TianqiServiceImpl implements TianqiService {
 
     @Override
     public Map<String, String> getTheNextThreeDaysWeather() {
-        Map<String, String> map =  null;
+        Map<String, String> map =  new HashMap<>();
         try {
             OkHttpClient client = new OkHttpClient.Builder().build();
             HttpUrl url = new HttpUrl.Builder()
@@ -71,19 +72,26 @@ public class TianqiServiceImpl implements TianqiService {
             String responseResult = response.body().string();
             LocalDate now = LocalDate.now();
             //封装今天，明天，后天的时间
-            Map<String,String> daySet = new HashMap<>();
-            daySet.put(String.valueOf(now.getDayOfMonth()),"今");
-            daySet.put(String.valueOf(now.plusDays(1L).getDayOfMonth()),"明");
-            daySet.put(String.valueOf(now.plusDays(2L).getDayOfMonth()),"后");
-            //过滤，提取结果
-            map = JSONObject.parseObject(responseResult).getJSONArray("data").stream()
-                    .peek(o -> {
-                        String date = ((JSONObject) o).getString("date").substring(8);
-                        ((JSONObject) o).put("date",date);
-                    })
-                    .filter(o-> daySet.containsKey(((JSONObject) o).getString("date")))
-                    .collect(Collectors.toMap(o -> daySet.get(((JSONObject) o).getString("date")),
-                            o -> ((JSONObject) o).getString("wea")));
+//            Map<String,String> daySet = new HashMap<>();
+//            daySet.put(String.valueOf(now.getDayOfMonth()),"今");
+//            daySet.put(String.valueOf(now.plusDays(1L).getDayOfMonth()),"明");
+//            daySet.put(String.valueOf(now.plusDays(2L).getDayOfMonth()),"后");
+//            //过滤，提取结果
+//            map = JSONObject.parseObject(responseResult).getJSONArray("data").stream()
+//                    .peek(o -> {
+//                        String date = ((JSONObject) o).getString("date").substring(8);
+//                        ((JSONObject) o).put("date",date);
+//                    })
+//                    .filter(o-> daySet.containsKey(((JSONObject) o).getString("date")))
+//                    .collect(Collectors.toMap(o -> daySet.get(((JSONObject) o).getString("date")),
+//                            o -> ((JSONObject) o).getString("wea")));
+            JSONArray data = JSONObject.parseObject(responseResult).getJSONArray("data");
+            String wea1 = data.getJSONObject(0).getString("wea");
+            String wea2 = data.getJSONObject(1).getString("wea");
+            String wea3 = data.getJSONObject(2).getString("wea");
+            map.put("今",wea1);
+            map.put("明",wea2);
+            map.put("后",wea3);
         } catch (IOException e) {
             throw new RuntimeException("获取失败");
         }

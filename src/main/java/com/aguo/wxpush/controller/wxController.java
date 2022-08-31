@@ -3,6 +3,7 @@ package com.aguo.wxpush.controller;
 
 import com.aguo.wxpush.constant.ConfigConstant;
 import com.aguo.wxpush.service.SendService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.util.StringUtils;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.util.TimeZone;
 
 @RestController
+@Slf4j
 public class wxController {
 
     @Autowired
@@ -33,6 +35,7 @@ public class wxController {
     @Scheduled(cron = "0 30 07 ? * *",zone = "GMT-8")
     @RequestMapping("/send")
     public String send() {
+        log.info("早晨推送启动！");
         return sendService.sendWeChatMsg();
     }
 
@@ -44,6 +47,7 @@ public class wxController {
     @Scheduled(cron = "0 0 21 ? * *",zone = "GMT-8")
     @RequestMapping("/sendNight")
     public String sendNight() {
+        log.info("晚上推送启动！");
         return sendService.sendNightWeChatMsg();
     }
 
