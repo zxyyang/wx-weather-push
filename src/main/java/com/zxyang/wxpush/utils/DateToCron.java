@@ -1,8 +1,8 @@
-package com.aguo.wxpush.utils;
+package com.zxyang.wxpush.utils;
 
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
-import com.aguo.wxpush.enums.CronFormate;
+import com.zxyang.wxpush.enums.CronFormate;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;

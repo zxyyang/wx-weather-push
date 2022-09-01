@@ -1,4 +1,4 @@
-package com.aguo.wxpush.utils;
+package com.zxyang.wxpush.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

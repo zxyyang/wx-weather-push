@@ -1,4 +1,4 @@
-package com.aguo.wxpush.constant;
+package com.zxyang.wxpush.constant;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;

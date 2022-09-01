@@ -1,8 +1,8 @@
-package com.aguo.wxpush;
+package com.zxyang.wxpush;
 
-import com.aguo.wxpush.constant.ConfigConstant;
-import com.aguo.wxpush.service.ProverbService;
-import com.aguo.wxpush.service.TianqiService;
+import com.zxyang.wxpush.constant.ConfigConstant;
+import com.zxyang.wxpush.service.ProverbService;
+import com.zxyang.wxpush.service.TianqiService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.BufferedInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 

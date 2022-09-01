@@ -1,6 +1,6 @@
-package com.aguo.wxpush.utils;
+package com.zxyang.wxpush.utils;
 
-import com.aguo.wxpush.entity.TextMessage;
+import com.zxyang.wxpush.entity.TextMessage;
 import com.thoughtworks.xstream.XStream;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;

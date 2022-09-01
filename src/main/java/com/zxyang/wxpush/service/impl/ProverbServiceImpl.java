@@ -1,9 +1,8 @@
-package com.aguo.wxpush.service.impl;
+package com.zxyang.wxpush.service.impl;
 
-import cn.hutool.core.util.RadixUtil;
 import cn.hutool.core.util.RandomUtil;
-import com.aguo.wxpush.constant.ConfigConstant;
-import com.aguo.wxpush.service.ProverbService;
+import com.zxyang.wxpush.constant.ConfigConstant;
+import com.zxyang.wxpush.service.ProverbService;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import okhttp3.*;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Random;
 
 
 /**

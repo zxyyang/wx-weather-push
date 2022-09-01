@@ -1,4 +1,4 @@
-package com.aguo.wxpush.enums;
+package com.zxyang.wxpush.enums;
 
 /**
  * Copyright: Copyright (C) 2022, Inc. All rights reserved.

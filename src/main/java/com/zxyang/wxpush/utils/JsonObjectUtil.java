@@ -1,4 +1,4 @@
-package com.aguo.wxpush.utils;
+package com.zxyang.wxpush.utils;
 
 import com.alibaba.fastjson.JSONObject;
 

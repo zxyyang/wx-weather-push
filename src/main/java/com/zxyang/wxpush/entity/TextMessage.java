@@ -1,4 +1,4 @@
-package com.aguo.wxpush.entity;
+package com.zxyang.wxpush.entity;
  
 
 /**

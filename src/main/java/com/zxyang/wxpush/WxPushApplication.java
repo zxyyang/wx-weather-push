@@ -1,4 +1,4 @@
-package com.aguo.wxpush;
+package com.zxyang.wxpush;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

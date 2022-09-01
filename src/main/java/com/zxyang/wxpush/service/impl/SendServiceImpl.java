@@ -1,18 +1,16 @@
-package com.aguo.wxpush.service.impl;
+package com.zxyang.wxpush.service.impl;
 
-import cn.hutool.core.date.DateTime;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.Scheduler;
 import cn.hutool.cron.task.Task;
-import cn.hutool.setting.Setting;
-import com.aguo.wxpush.constant.ConfigConstant;
-import com.aguo.wxpush.entity.TextMessage;
-import com.aguo.wxpush.service.ProverbService;
-import com.aguo.wxpush.service.SendService;
-import com.aguo.wxpush.service.TianqiService;
-import com.aguo.wxpush.utils.*;
+import com.zxyang.wxpush.constant.ConfigConstant;
+import com.zxyang.wxpush.entity.TextMessage;
+import com.zxyang.wxpush.service.ProverbService;
+import com.zxyang.wxpush.service.SendService;
+import com.zxyang.wxpush.service.TianqiService;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.zxyang.wxpush.utils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.util.*;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: zx.yang
@@ -72,7 +67,7 @@ public class SendServiceImpl implements SendService {
         HashMap<String,Object> resultMap = new HashMap<>();
         for (String opedId : configConstant.getOpenidList()) {
             //今天
-            String date = DateUtil.formatDate(new Date(), "yyyy-MM-dd hh:mm");
+            String date = DateUtil.formatDate(new Date(), "yyyy-MM-dd HH:mm");
             String week = DateUtil.getWeekOfDate(new Date());
             String day = date + " " + week;
             JSONObject first = JsonObjectUtil.packJsonObject(day, "#EED016");
@@ -209,7 +204,7 @@ public class SendServiceImpl implements SendService {
         for (String opedId : configConstant.getOpenidList()) {
 
             //今天
-            String date = DateUtil.formatDate(new Date(), "yyyy-MM-dd hh:mm");
+            String date = DateUtil.formatDate(new Date(), "yyyy-MM-dd HH:mm");
             String week = DateUtil.getWeekOfDate(new Date());
             String day = date + " " + week;
             JSONObject first = JsonObjectUtil.packJsonObject(day, "#EED016");

@@ -1,8 +1,8 @@
-package com.aguo.wxpush.controller;
+package com.zxyang.wxpush.controller;
 
 
-import com.aguo.wxpush.constant.ConfigConstant;
-import com.aguo.wxpush.service.SendService;
+import com.zxyang.wxpush.constant.ConfigConstant;
+import com.zxyang.wxpush.service.SendService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.TimeZone;
 
 @RestController
 @Slf4j

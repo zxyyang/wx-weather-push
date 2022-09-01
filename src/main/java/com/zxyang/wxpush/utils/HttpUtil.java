@@ -1,4 +1,4 @@
-package com.aguo.wxpush.utils;
+package com.zxyang.wxpush.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
