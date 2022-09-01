@@ -32,7 +32,7 @@ public class wxController {
      * 每天早上7：30执行推送
      * @return
      */
-    @Scheduled(cron = "0 30 07 ? * *",zone = "GMT-8")
+    @Scheduled(cron = "0 30 7 * * ?",zone = "GMT-8")
     @RequestMapping("/send")
     public String send() {
         log.info("早晨推送启动！");
@@ -44,7 +44,7 @@ public class wxController {
      * 每天早上7：30执行推送
      * @return
      */
-    @Scheduled(cron = "0 0 21 ? * *",zone = "GMT-8")
+    @Scheduled(cron = "0 0 21 * * ?",zone = "GMT-8")
     @RequestMapping("/sendNight")
     public String sendNight() {
         log.info("晚上推送启动！");
