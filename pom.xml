@@ -10,9 +10,9 @@
     </parent>
     <groupId>com.lx</groupId>
 <!--    <packaging>war</packaging>-->
-    <artifactId>wx-push</artifactId>
+    <artifactId>wx-weather-push</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>wx-push</name>
+    <name>wx-weather-push</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
