@@ -1,9 +1,9 @@
-#去申请 https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login
+# https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login
 wx:
   config:
     appId: "wx7dbab3b0dafb7726"
     appSecret: "d8faf8f789bd723de0657cd5f5073df2"
-    #模板Id
+    #???Id
     templateId1: "cZRFR4whDV-PxpWCSgNpz6INToTROaHHG9Vsl-OiV7o"
     templateId2: "q70zHoVzfqFdM6LlGY8f8e_DnQeOhFpFC2uB_Tqu43g"
     templateId3: "yJ5pcnOCnxv4NvYfvKDqsI2MJpNuUaDFOZZ1aaBTk-o"
@@ -13,18 +13,18 @@ wx:
 
 message:
   config:
-    birthday1: "03-11" #生日日期
+    birthday1: "03-11"
     birthday2: "12-30"
-    togetherDate: "2021-12-25" #填你们在一起的那天日期
+    togetherDate: "2021-12-25"
     message: "Have a happy day and love you"
 
-#去申请 https://tianqiapi.com/user/login
+# https://tianqiapi.com/user/login
 weather:
   config:
     appid: "27557843"
     appSecret: "Bc4CR4MY"
-    city: "上海"
-#注册并购买第二档次，有券，直接白嫖 https://www.apispace.com/eolink/api/myjj/introduction
+    city: "???"
+# https://www.apispace.com/eolink/api/myjj/introduction
 ApiSpace:
   token: "27e6b60faeb147f98eb6870520c760c8"
 
